@@ -2,12 +2,16 @@ import cv2
 from os import listdir, mkdir, getcwd
 from os.path import isdir, isfile
 import sys
-
 name = input("What's your name : ").strip().lower()
 if name == '':
     print('Cancel')
     sys.exit()
-path = getcwd()+'\\'
+path = getcwd()
+if 'Photo_face' not in set(listdir(path)):
+    mkdir(path+'\\Photo_face')
+if 'Train_dataset' not in set(listdir(path)):
+    mkdir(path+'\\Train_dataset')
+path += '\\'
 path_photo = path + 'Photo_face\\'
 path_yml = path + 'Train_dataset'
 lsdir = [dir for dir in listdir(path_photo) if isdir(path_photo+dir)]
